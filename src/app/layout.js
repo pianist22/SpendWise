@@ -55,6 +55,7 @@ import "./globals.css";
 // server-side auth + checkUser
 import { auth } from "@clerk/nextjs/server";
 import { checkUser } from "@/lib/checkUser";
+import { icons } from "lucide-react";
 
 // using our own font 
 const inter = Inter({ subsets: ["latin"] });
@@ -62,6 +63,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "SpendWise",
   description: "One Stop Finance Platform",
+  icons:{
+    icon:"/favicon.ico",
+  }
 };
 
 export default async function RootLayout({ children }) {
