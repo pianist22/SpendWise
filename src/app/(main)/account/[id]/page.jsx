@@ -1,11 +1,14 @@
+
 import { getAccountWithTransactions } from '@/actions/accounts';
 import { notFound } from 'next/navigation';
-import React, { Suspense } from 'react'
+import React, { Suspense } from 'react';
 import TransactionTable from '../_components/TransactionTable';
-import { BarLoader } from 'react-spinners';
 import AccountChart from '../_components/AccountChart';
+import Loader from '@/components/Loader'; // import your Loader component
+import { BarLoader } from 'react-spinners';
 
-const AccountPage =async({params}) => {
+// Page component
+const AccountPage = async ({ params }) => {
   const data = await params;
   const accountData = await getAccountWithTransactions(data.id);
 
@@ -53,7 +56,13 @@ const AccountPage =async({params}) => {
       </Suspense>
     </div>
   );
+};
 
+// Default export wrapped in Suspense
+export default function Page(props) {
+  return (
+    <Suspense fallback={<Loader />}>
+      <AccountPage {...props} />
+    </Suspense>
+  );
 }
-
-export default AccountPage

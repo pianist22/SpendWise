@@ -176,8 +176,146 @@ const DashboardOverview = ({ accounts, transactions })=>{
           )}
         </CardContent>
       </Card>
+      {/* <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-normal">
+            Monthly Expense Breakdown
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-0 pb-5">
+          {pieChartData.length === 0 ? (
+            <p className="text-center text-muted-foreground py-4">
+              No expenses this month
+            </p>
+          ) : (
+            <MonthlyExpensePieChart data={pieChartData} />
+          )}
+        </CardContent>
+      </Card> */}
     </div>
   );
 }
+
+
+// Add percent calculation
+function getPieData(data) {
+  const total = data.reduce((sum, item) => sum + item.value, 0);
+  return data.map(item => ({
+    ...item,
+    percent: total ? ((item.value / total) * 100).toFixed(1) : "0"
+  }));
+}
+
+const MonthlyExpensePieChart = ({ data }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [visibleCategories, setVisibleCategories] = useState(data.map(item => item.name));
+
+  // Filter visible categories for display
+  const filteredData = getPieData(data.filter(item => visibleCategories.includes(item.name)));
+
+  // Toggle category visibility
+  const handleLegendClick = (category) => {
+    setVisibleCategories(prev =>
+      prev.includes(category)
+        ? prev.filter(c => c !== category)
+        : [...prev, category]
+    );
+  };
+
+  // Custom tooltip
+const renderTooltip = ({ active, payload }) => {
+  // Check if tooltip should appear and payload exists and has data
+  if (
+    active &&
+    payload &&
+    Array.isArray(payload) &&
+    payload.length > 0 &&
+    payload &&
+    payload.payload
+  ) {
+    const { name, value, percent } = payload.payload;
+    return (
+      <div style={{
+        background: "#fff",
+        border: "1px solid #ccc",
+        padding: "8px",
+        borderRadius: "8px"
+      }}>
+        <strong>{name}</strong>
+        <div>Amount: ${value.toFixed(2)}</div>
+        <div>Percent: {percent}%</div>
+      </div>
+    );
+  }
+  // Return null when payload is not present to avoid errors
+  return null;
+};
+
+
+  // Custom Legend
+  const renderLegend = (props) => {
+    const { payload } = props;
+    return (
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {payload.map((entry, i) => (
+          <li
+            key={`item-${i}`}
+            style={{
+              display: "inline-block",
+              marginRight: 16,
+              cursor: "pointer",
+              opacity: visibleCategories.includes(entry.value) ? 1 : 0.5
+            }}
+            onClick={() => handleLegendClick(entry.value)}
+          >
+            <span
+              style={{
+                display: 'inline-block',
+                width: 12,
+                height: 12,
+                backgroundColor: entry.color,
+                marginRight: 6,
+                borderRadius: "50%"
+              }}
+            />
+            {entry.value}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <PieChart>
+        <Pie
+          data={filteredData}
+          cx="50%"
+          cy="50%"
+          outerRadius={90}
+          fill="#8884d8"
+          dataKey="value"
+          label={({ name, value, percent }) => `${name}: $${value.toFixed(2)} (${percent}%)`}
+          isAnimationActive={true}
+          activeIndex={activeIndex}
+          onClick={(_, index) => setActiveIndex(index === activeIndex ? null : index)}
+        >
+          {filteredData.map((entry, index) => (
+            <Cell
+              key={`cell-${index}`}
+              fill={COLORS[index % COLORS.length]}
+            />
+          ))}
+        </Pie>
+        <Tooltip content={renderTooltip} />
+        <Legend
+          verticalAlign="bottom"
+          align="center"
+          content={renderLegend}
+        />
+      </PieChart>
+    </ResponsiveContainer>
+  );
+};
 
 export default DashboardOverview
