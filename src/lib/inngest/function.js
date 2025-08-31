@@ -186,10 +186,11 @@ export const checkBudgetAlert = inngest.createFunction(
             const totalExpenses = expenses._sum.amount?.toNumber() || 0;
             const budgetAmount = budget.amount;
             const percentageUsed = (totalExpenses / budgetAmount) * 100;
-            // console.log(percentageUsed);
+            console.log(percentageUsed);
+            console.log(budget);
 
-            if(percentageUsed>=80 && 
-                (!budget.lastAlertSent || isNewMonth(new Date(budget.lastAlertSent),new Date()))
+            if(percentageUsed>=80 
+              // && (!budget.lastAlertSent || isNewMonth(new Date(budget.lastAlertSent),new Date()))
             ){
                 // Send the email to user
                 await sendEmail({
