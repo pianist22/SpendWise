@@ -3,7 +3,7 @@
 Welcome to **Spendwise**, a comprehensive full-stack finance tracking platform powered by Artificial Intelligence. Spendwise makes managing personal and multiple financial accounts simple, smart, and insightful by leveraging state-of-the-art technologies and AI-driven analytics.
 
 
-Link [SpendWise](https://spendwise.priyanshucode.xyz)
+Link: [SpendWise](https://spendwise.priyanshucode.xyz)
 ---
 
 ## Features
@@ -122,9 +122,9 @@ This project is licensed under the MIT License.
 
 For questions, suggestions, or support, please open an issue or contact:
 
-**Your Name / Team**  
-Email: your-email@example.com  
-GitHub: [github.com/yourusername](https://github.com/yourusername)
+**Priyanshu Saha**  
+Email: priyanshusaha944@gmail.com  
+GitHub: [pianist22](https://github.com/pianist22)
 
 ---
 
