@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ClerkLoaded, ClerkLoading, ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { checkUser } from "@/lib/checkUser";
 
 // server-side auth + checkUser
 
@@ -19,6 +20,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
+  await checkUser();
   return (
     <ClerkProvider>
       <html lang="en">
