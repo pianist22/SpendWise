@@ -53,7 +53,7 @@ Link: [SpendWise](https://spendwise.priyanshucode.xyz)
 
 1. Clone this repository:
 
-- git clone https://github.com/yourusername/spendwise.git
+- git clone https://github.com/pianist22/SpendWise.git
 - cd spendwise
 
 2. Install dependencies:
