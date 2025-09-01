@@ -52,7 +52,7 @@ Welcome to **Spendwise**, a comprehensive full-stack finance tracking platform p
 1. Clone this repository:
 
 git clone https://github.com/yourusername/spendwise.git
-cd spendwise
+-cd spendwise
 
 2. Install dependencies:
 npm install
