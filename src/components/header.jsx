@@ -141,7 +141,7 @@
 
 // export default Header;
 
-"use client";
+// "use client";
 
 import {
   SignedIn,
@@ -154,8 +154,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { LayoutDashboard, PenBox } from "lucide-react";
+import { checkUser } from "@/lib/checkUser";
 
-const Header = () => {
+const Header =async() => {
+  // this function check whether the current clerk user entry is made to prisma DB or not 
+  await checkUser();
   return (
     <header className="fixed top-0 p-1 w-full gap-4 h-22 bg-white/80 backdrop-blur-md z-50 border-b">
       <nav className="container mx-auto flex items-center justify-between">
