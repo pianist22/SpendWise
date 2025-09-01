@@ -70,10 +70,11 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const { userId } = auth();
+  console.log(userId);
 
   // Run checkUser only if logged in
   if (userId) {
-    await checkUser(userId);
+    await checkUser();
   }
 
   return (

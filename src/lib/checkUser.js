@@ -31,6 +31,7 @@ export const checkUser = async()=>{
 
     }
     catch(error){
+        console.log("Hello");
         console.log(error.message);
     }
     
