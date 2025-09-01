@@ -94,6 +94,7 @@ export default async function Home() {
                         className="rounded-full"
                       />
                       <div className="ml-4">
+                        {/* <div>{testimonial.image}</div> */}
                         <div className="font-semibold">{testimonial.name}</div>
                         <div className="text-sm text-gray-600">
                           {testimonial.role}
