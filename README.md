@@ -2,6 +2,8 @@
 
 Welcome to **Spendwise**, a comprehensive full-stack finance tracking platform powered by Artificial Intelligence. Spendwise makes managing personal and multiple financial accounts simple, smart, and insightful by leveraging state-of-the-art technologies and AI-driven analytics.
 
+
+Link [SpendWise](https://spendwise.priyanshucode.xyz)
 ---
 
 ## Features
@@ -51,26 +53,26 @@ Welcome to **Spendwise**, a comprehensive full-stack finance tracking platform p
 
 1. Clone this repository:
 
-git clone https://github.com/yourusername/spendwise.git
+- git clone https://github.com/yourusername/spendwise.git
 - cd spendwise
 
 2. Install dependencies:
-npm install
+- npm install
 
 3. Configure environment variables:  
 Create a `.env` file with the following keys:
-DATABASE_URL=your_database_connection_string
-CLERK_API_KEY=your_clerk_api_key
-GEMINI_API_KEY=your_gemini_api_key
-INNGEST_API_KEY=your_inngest_api_key
-SUPABASE_URL=your_supabase_url
-SUPABASE_KEY=your_supabase_key
+- DATABASE_URL=your_database_connection_string
+- CLERK_API_KEY=your_clerk_api_key
+- GEMINI_API_KEY=your_gemini_api_key
+- INNGEST_API_KEY=your_inngest_api_key
+- SUPABASE_URL=your_supabase_url
+- SUPABASE_KEY=your_supabase_key
 
 4. Run database migrations:
-npx prisma migrate deploy
+- npx prisma migrate deploy
 
 5. Start the development server:
-npm run dev
+- npm run dev
 
 
 6. Open [http://localhost:3000](http://localhost:3000) in your browser.
