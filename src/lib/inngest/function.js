@@ -190,7 +190,7 @@ export const checkBudgetAlert = inngest.createFunction(
             console.log(budget);
 
             if(percentageUsed>=80 
-              // && (!budget.lastAlertSent || isNewMonth(new Date(budget.lastAlertSent),new Date()))
+              && (!budget.lastAlertSent || isNewMonth(new Date(budget.lastAlertSent),new Date()))
             ){
                 // Send the email to user
                 await sendEmail({
